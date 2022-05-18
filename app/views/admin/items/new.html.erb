@@ -5,16 +5,15 @@
   <%= f.file_field :image, accept: "image/*" %>
 
   <h4>商品名</h4>
-  <%= f.string :name %>
+  <%= f.text_field :name, placefolder: "商品名" %>
 
   <h4>商品説明</h4>
-  <%= f.text :text %>
+  <%= f.text_area :text, placefolder: "ここに説明文を記述します" %>
 
   <h4>ジャンル</h4>
 
-
   <h4>税抜価格</h4>
-  <%= f.integer :price %>
+  <%= f.text_field :price %>
 
   <h4>販売ステータス</h4>
   <%= %>
