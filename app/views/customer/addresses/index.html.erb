@@ -1,0 +1,19 @@
+<%= form_with model: @address, url: customer_addresses_path do |f| %>
+  <p>
+  <%= f.label :name, "宛名" %>
+  <%= f.text_field :name %>
+  </p>
+
+  <p>
+  <%= f.label :postcode, "郵便番号" %>
+  <%= f.text_field :postcode %>
+  </p>
+
+  <p>
+  <%= f.label :address, "住所" %>
+  <%= f.text_field :address %>
+  </p>
+
+  <%= f.submit "新規登録" %>
+
+<% end %>

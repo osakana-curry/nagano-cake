@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  namespace :customer do
+    resources :addresses, only: [:index,:create,:edit,:update,:destroy]
+
+  end
   devise_for :admin, skip: [:registrations, :passwords], controllers: {
     sessions: "admin/sessions"
   }
@@ -7,7 +11,7 @@ Rails.application.routes.draw do
     registrations: "customer/registrations",
     sessions: 'customer/sessions'
   }
-  
+
   root to: 'homes#top'
   get 'homes/about' => "homes#about", as: "about"
 
