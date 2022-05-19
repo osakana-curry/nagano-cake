@@ -1,8 +1,6 @@
+<h4>配送先登録 / 一覧</h4>
+
 <%= form_with model: @address, url: customer_addresses_path do |f| %>
-  <p>
-  <%= f.label :name, "宛名" %>
-  <%= f.text_field :name %>
-  </p>
 
   <p>
   <%= f.label :postcode, "郵便番号" %>
@@ -14,6 +12,22 @@
   <%= f.text_field :address %>
   </p>
 
-  <%= f.submit "新規登録" %>
+  <p>
+  <%= f.label :name, "宛名" %>
+  <%= f.text_field :name %>
+  </p>
+
+  <%= f.submit "新規登録", class: 'btn btn-success mr-3' %>
+
+  <% @addresses.each do |address| %>
+  <p>郵便番号</p>
+　<span><%= address.postcode %></span>
+　<p>住所</p>
+　<span><%= address.address %></span>
+　<p>宛名</p>
+　<span><%= address.name %></span>
+  <%= link_to '編集する', edit_customer_address_path(address.id), class: 'btn btn-success mr-3' %>
+  <%= link_to '削除する', customer_address_path(address.id), method: :delete, data: {confirm: "投稿を削除します。よろしいですか？"}, class: 'btn btn-danger' %>
+　<% end %>
 
 <% end %>

@@ -1,2 +1,22 @@
-<h1>Customer::Addresses#edit</h1>
-<p>Find me in app/views/customer/addresses/edit.html.erb</p>
+<h2>編集画面</h2>
+
+<%= form_with model: @address, url:customer_address_path, method: :patch do |f| %>
+
+  <p>
+  <%= f.label :postcode, "郵便番号" %>
+  <%= f.text_field :postcode %>
+  </p>
+
+  <p>
+  <%= f.label :address, "住所" %>
+  <%= f.text_field :address %>
+  </p>
+
+  <p>
+  <%= f.label :name, "宛名" %>
+  <%= f.text_field :name %>
+  </p>
+
+  <%= f.submit "変更内容を保存", class: 'btn btn-success mr-3' %>
+
+<% end %>
