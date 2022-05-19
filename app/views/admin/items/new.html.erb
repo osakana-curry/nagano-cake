@@ -14,7 +14,7 @@
   <%= f.collection_select(:genre_id, @genres, :id, :name, prompt: "--選択してください--")%>
 
   <h4>税抜価格</h4>
-  <%= f.text_field :price %>
+  <%= f.text_field :price %>円
 
   <h4>販売ステータス</h4>
   <%= f.radio_button :sale_status, :販売中, checked: "checked" %>
@@ -22,6 +22,6 @@
   <%= f.radio_button :sale_status, :販売停止中 %>
   <%= f.label :販売停止中, class: "sale_status_label" %>
 
-  <%= f.submit "新規登録" %>
+  <%= f.submit "新規登録", class: "btn btn-success" %>
 
 <% end %>

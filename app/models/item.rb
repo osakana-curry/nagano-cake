@@ -6,8 +6,12 @@ class Item < ApplicationRecord
 
   enum sale_status: { "販売中": 0, "販売停止中": 1 }
 
+  def add_tax_price
+    (self.price * 1.10).round
+  end
+
   def get_image
-    (profile_image.attached?) ? profile_image : 'no_image.jpg'
+    (image.attached?) ? image : 'no_image.jpg'
   end
 
 end
