@@ -1,0 +1,58 @@
+<div class="row">
+	<div class="col-xs-offset-1 col-xs-8">
+		<h4>会員詳細</h4>
+      <table class="table table-bordered table-condensed">
+	      <tbody>
+	      	<tr>
+	      		<td class="info">会員ID</td>
+	      		<td class="text-left"><%=@customer.id %></td>
+	      	</tr>
+		      <tr>
+			      <td class="info">氏名</td>
+			      <td class="text-left">　<%=@customer.last_name%> <%=@customer.first_name%></td>
+		      </tr>
+		      <tr>
+			      <td class="info">カナ</td>
+			      <td class="text-left"><%=@customer.last_name_kana%> <%=@customer.first_name_kana%></td>
+		      </tr>
+		      <tr>
+			      <td class="info">郵便番号</td>
+			      <td class="text-left"><%= @customer.postcode %></td>
+		      </tr>
+		      <tr>
+			      <td class="info">住所</td>
+			      <td class="text-left"><%= @customer.address %></td>
+		      </tr>
+		      <tr>
+			      <td class="info">電話番号</td>
+			      <td class="text-left"><%= @customer.phone_number %></td>
+		      </tr>
+		      <tr>
+			      <td class="info">メールアドレス</td>
+			      <td class="text-left"><%= @customer.email %></td>
+		      </tr>
+		      <tr>
+		      	<td class="info">会員ステータス</td>
+		      	<td class="text-left">
+              <% if @customer.is_deleted == true%>
+                <p class="text-danger">退会済</p>
+              <% else %>
+                <p class="text-success">有効</p>
+              <% end %>
+            </td>
+		      </tr>
+	      </tbody>
+      </table>
+      
+      <div class="bottom">
+      	<p>
+          <strong><i class="far fa-user"></i>登録情報</strong>
+          <%= link_to "編集する",edit_admin_customer_path(@customer), class: "btn btn-success"%>
+        </p>
+      	
+      	
+      </div>
+	</div>
+</div>
+
+</div>
