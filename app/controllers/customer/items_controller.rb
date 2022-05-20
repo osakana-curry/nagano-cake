@@ -1,14 +1,15 @@
 class Customer::ItemsController < ApplicationController
+
   def index
     @items = Item.all
     @genres = Genre.all
   end
 
   def show
-    @items = Item.all
     @genres = Genre.all
-    @cart = Cart.find(params[:id])
-
+    @items = Item.all
+    @item = Item.find(params[:id])
+    @cart = Cart.new
   end
 
   private

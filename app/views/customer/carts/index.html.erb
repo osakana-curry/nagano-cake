@@ -1,6 +1,7 @@
 <h2>ショッピングカート</h2>
 
-<table>
+<div class="col-5 ml-3">
+        <table class="table">
   <thead>
       <th>商品名</th>
       <th>単価(税込)</th>
@@ -8,11 +9,17 @@
       <th>小計</th>
       <th></th>
   </thead>
+
   <tbody>
-  <% @carts.items.each do |cart| %>
-      <tr>
-      <%= item.name %>
-      </tr>
-  <% end %>
+　　　<% @carts.each do |cart| %>
+　　　  <tr>
+　　　    <td><%= cart.item_id %></td>
+　　　    <td>¥<%= cart.item.add_tax_price.to_s(:delimited)  %></td>
+　　　    <td><%= cart.amount %></td>
+　　　    <td>¥<%= cart.subtotal %></td>
+　　　  </tr>
+      <% end %>
   </tbody>
 </table>
+　¥<%= @total.round.to_s(:delimited) %>
+</div>
