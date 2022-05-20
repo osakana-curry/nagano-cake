@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+
   namespace :customer do
     get "/"=>"customers#show"
     get "/quit" => "customers#quit"
@@ -7,6 +8,12 @@ Rails.application.routes.draw do
     patch "/" =>"customers#update", as: 'update'
 
     resources :addresses, only: [:index,:create,:edit,:update,:destroy]
+
+    resources :carts,only: [:index,:update,:create,:destroy] do
+        collection do
+          delete '/' => 'carts#all_destroy'
+        end
+    end
 
   end
 
