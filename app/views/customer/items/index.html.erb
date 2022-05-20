@@ -16,7 +16,7 @@
 <% @items.each do |item| %>
 
 <div>
-  <%= image_tag item.get_image, size:'200×100' %><br>
+  <%= image_tag item.get_image(200,200) %><br>
   <%= item.name %><br>
   ￥<%= item.add_tax_price.to_s(:delimited) %>
 </div>
