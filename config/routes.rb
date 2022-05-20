@@ -29,7 +29,7 @@ Rails.application.routes.draw do
   namespace :admin do
     resources :items
     resources :customers,only:[:show,:update,:index,:edit]
-    patch "/admin/customers" => "customers#update", as: 'update'
+    #patch "/admin/customers" => "customers#update", as: 'update'
   end
 
 
