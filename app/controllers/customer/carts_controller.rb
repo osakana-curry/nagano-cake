@@ -1,17 +1,23 @@
 class Customer::CartsController < ApplicationController
 
+
   before_action :authenticate_customer!
 
 
   def index
-    @carts = current.cart
+    @carts = Cart.all
+    @total = @carts.inject(0) { |sum, item| sum + item.total }
   end
 
   def create
-    @cart = current_customer.carts.new(params_cart)
+    @item = Item.find(cart_params[:item_id])
+    @cart = current_customer.carts.new(cart_params)
+    @cart.save
+    redirect_to customer_carts_path
   end
 
   def update
+
   end
 
   def destroy
