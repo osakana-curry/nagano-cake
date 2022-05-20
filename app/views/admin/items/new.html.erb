@@ -5,10 +5,10 @@
   <%= f.file_field :image, accept: "image/*" %>
 
   <h4>商品名</h4>
-  <%= f.text_field :name, placefolder: "商品名" %>
+  <%= f.text_field :name, placeholder: "商品名" %>
 
   <h4>商品説明</h4>
-  <%= f.text_area :text, placefolder: "ここに説明文を記述します" %>
+  <%= f.text_area :text, placeholder: "ここに説明文を記述します" %>
 
   <h4>ジャンル</h4>
   <%= f.collection_select(:genre_id, @genres, :id, :name, prompt: "--選択してください--")%>

@@ -1,6 +1,6 @@
 <h2>商品詳細</h2>
 
-<%= image_tag @item.get_image, size: '100×100' %>
+<%= image_tag @item.get_image, size:'100×100' %>
 
 <h4>商品名</h4>
 <%= @item.name %>
@@ -9,7 +9,7 @@
 <%= @item.text %>
 
 <h4>ジャンル</h4>
-<%=@item.genre.name %>
+<%= @item.genre.name %>
 
 <h4>
   税込み価格<br>
