@@ -8,7 +8,6 @@ class Customer::ItemsController < ApplicationController
     @items = Item.all
     @genres = Genre.all
     @item = Item.find(params[:id])
-
   end
 
   private

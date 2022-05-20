@@ -15,10 +15,12 @@
 
 <% @items.each do |item| %>
 
-<div>
-  <%= image_tag item.get_image(200,200) %><br>
-  <%= item.name %><br>
-  ￥<%= item.add_tax_price.to_s(:delimited) %>
-</div>
+  <div>
+    <%= link_to customer_item_path(item.id) do %>
+      <%= image_tag item.get_image(200,200) %><br>
+    <% end %>
+    <%= item.name %><br>
+    ￥<%= item.add_tax_price.to_s(:delimited) %>
+  </div>
 
 <% end %>
