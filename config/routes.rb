@@ -10,7 +10,6 @@ Rails.application.routes.draw do
 
   end
 
-  end
   devise_for :admin, skip: [:registrations, :passwords], controllers: {
     sessions: "admin/sessions"
   }
