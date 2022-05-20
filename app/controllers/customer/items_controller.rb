@@ -6,6 +6,7 @@ class Customer::ItemsController < ApplicationController
 
   def show
     @items = Item.all
+    
   end
 
   private
