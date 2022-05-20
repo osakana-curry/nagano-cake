@@ -1,21 +1,23 @@
 Rails.application.routes.draw do
 
-  namespace :customer do
-    get "/"=>"customers#show"
-    get "/quit" => "customers#quit"
-    get "/out" => "customers#out", as: 'out'
-    get "/edit"=>"customers#edit"
-    patch "/" =>"customers#update", as: 'update'
+    namespace :customer do
+      get "/"=>"customers#show"
+      get "/quit" => "customers#quit"
+      get "/out" => "customers#out", as: 'out'
+      get "/edit"=>"customers#edit"
+      patch "/" =>"customers#update", as: 'update'
 
-    resources :addresses, only: [:index,:create,:edit,:update,:destroy]
-
-    resources :carts,only: [:index,:update,:create,:destroy] do
+      resources :carts,only: [:index,:update,:create,:destroy] do
         collection do
           delete '/' => 'carts#all_destroy'
         end
-    end
+      end
 
-  end
+      resources :items, only: [:index, :show]
+
+      resources :addresses, only: [:index,:create,:edit,:update,:destroy]
+
+    end
 
   devise_for :admin, skip: [:registrations, :passwords], controllers: {
     sessions: "admin/sessions"
@@ -39,4 +41,3 @@ Rails.application.routes.draw do
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
-
