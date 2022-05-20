@@ -6,8 +6,11 @@ Rails.application.routes.draw do
     get "/edit"=>"customers#edit"
     patch "/" =>"customers#update", as: 'update'
 
+    resources :addresses, only: [:index,:create,:edit,:update,:destroy]
+
   end
 
+  end
   devise_for :admin, skip: [:registrations, :passwords], controllers: {
     sessions: "admin/sessions"
   }

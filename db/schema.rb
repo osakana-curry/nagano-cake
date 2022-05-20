@@ -12,6 +12,14 @@
 
 ActiveRecord::Schema.define(version: 2022_05_19_003713) do
 
+  create_table "addresses", force: :cascade do |t|
+    t.string "name"
+    t.string "postcode"
+    t.string "address"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.integer "customer_id"
+
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
     t.string "record_type", null: false
