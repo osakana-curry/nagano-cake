@@ -10,10 +10,16 @@
     <% end %>
 </table>
 
-<%= image_tag @item.get_image, size:'100×100' %>
+<%= image_tag @item.get_image(100, 100) %>
 <%= @item.name %>
 <%= @item.text %>
 ￥<%= @item.add_tax_price.to_s(:delimited) %>(税込)
-<%= f.select :amount, *[1..10] %>
-<%= f.hidden_field %>
+
+
+<%= form_with model: @item, url: customer_item_path do |f| %>
+　<%= f.select :amount, *[1..10] %>
+
+  <%= f.submit 'カートに入れる' %>
+<% end %>
+
 
