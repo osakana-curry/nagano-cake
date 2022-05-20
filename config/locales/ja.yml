@@ -1,0 +1,10 @@
+ja:
+  activerecord:
+  errors:
+    messages:
+      record_invalid: "バリデーションに失敗しました: %{errors}"
+  enums:
+    item:
+      sale_status:
+        for_sale: "販売中"
+        stop: "販売停止中"
