@@ -10,15 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_05_19_003713) do
-
-  create_table "addresses", force: :cascade do |t|
-    t.string "name"
-    t.string "postcode"
-    t.string "address"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.integer "customer_id"
+ActiveRecord::Schema.define(version: 2022_05_20_052045) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -46,6 +38,15 @@ ActiveRecord::Schema.define(version: 2022_05_19_003713) do
     t.integer "blob_id", null: false
     t.string "variation_digest", null: false
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
+  end
+
+  create_table "addresses", force: :cascade do |t|
+    t.string "name"
+    t.string "postcode"
+    t.string "address"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.integer "customer_id"
   end
 
   create_table "admins", force: :cascade do |t|
@@ -92,6 +93,19 @@ ActiveRecord::Schema.define(version: 2022_05_19_003713) do
     t.text "text", null: false
     t.integer "price", null: false
     t.integer "sale_status", default: 0, null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "orders", force: :cascade do |t|
+    t.integer "customer_id"
+    t.string "postcode"
+    t.string "name"
+    t.string "address"
+    t.integer "delivery_fee"
+    t.integer "charge"
+    t.integer "pay_type"
+    t.integer "order_status"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

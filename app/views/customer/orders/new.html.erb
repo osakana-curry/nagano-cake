@@ -1,0 +1,8 @@
+<h1>Customer::Orders#new</h1>
+<p>Find me in app/views/customer/orders/new.html.erb</p>
+<h2>注文情報入力</h2>
+<h4>支払方法</h4>
+
+<%= form_with model: @order, url: 新規投稿のpath do |f| %>
+<h4>お届け先</h4>
+ <%= f.radio_button :ご自身の住所 %>
