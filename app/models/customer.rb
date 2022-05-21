@@ -6,6 +6,7 @@ class Customer < ApplicationRecord
 
   has_many :carts, dependent: :destroy
   has_many :orders
+  has_many :addresses
 
   # 退会機能
   def active_for_authentication?

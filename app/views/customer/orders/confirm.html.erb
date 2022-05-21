@@ -1,10 +1,59 @@
 <h2>注文情報確認</h2>
-  <%= @order.amount %>
-  <%= @order.quantity %>
-  <%= @item.name %>
-  <%= @item.price %>
-<%= form_with model:[@item, @order], url:(item_order_path) do |f| %>
-  <%= f.hidden_field :amount %>
-  <%= f.hidden_field :quantity %>
-  <%= f.submit %>
+<table>
+  <th>商品名</th>
+  <th>単価(税込)</th>
+  <th>数量</th>
+  <th>小計</th>
+  </tr>
+   <% total = 0 %>
+      <% @carts.each do |cart| %>
+        <tr>
+          <td>
+            <%= cart.item.name %>
+          </td>
+          <td><%= (cart.item.price*1.08).to_i %></td>
+          <td><%= cart.amount %></td>
+          <td>
+             <% subtotal = ((cart.item.price*cart.amount)*1.08).to_i %> <!--小計の計算-->
+             <%= subtotal %><!--小計を表示-->
+           </td>
+         </tr>
+         <% total += (cart.item.price*cart.amount)*1.08 %> <!--アイテムごとに合計金額に加算-->
+     <% end %>
+</table>
+<table>
+     <tr>
+       <th>送料</th>
+        <% @order.delivery_fee = 800 %>
+       <td><%= @order.delivery_fee %></td>
+      </tr>
+     <tr>
+       <th>商品合計</th>
+       <td><%= total.to_i %></td>
+      </tr>
+      <tr>
+        <th>請求金額</th>
+        <% @order.charge = @order.delivery_fee + total.to_i %>
+        <td><%= @order.charge %></td>
+      </tr>
+</table>
+
+
+<h4>支払方法</h4>
+<%= @order.pay_type %>
+<h4>お届け先</h4>
+ <%= @order.postcode %>
+ <%= @order.address %>
+ <%= @order.name %>
+
+<%= form_with model: @order, url: customer_confirm_path, method: :post, local: true do |f| %>
+   <%= f.hidden_field :customer_id %>
+   <%= f.hidden_field :delivery_fee %>
+   <%= f.hidden_field :charge %>
+   <%= f.hidden_field :pay_type %>
+   <%= f.hidden_field :name %>
+   <%= f.hidden_field :address %>
+   <%= f.hidden_field :postcode %>
+   <%= f.hidden_field :order_status %>
+  <%= f.submit "注文を確定する", class: "btn btn-success" %>
 <% end %>
