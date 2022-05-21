@@ -31,6 +31,9 @@ class Customer::CartsController < ApplicationController
   end
 
   def all_destroy
+    @carts = current_customer.carts
+    @carts.destroy_all
+    redirect_to customer_carts_path
   end
 
   private

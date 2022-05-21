@@ -1,13 +1,17 @@
 <h2>ショッピングカート</h2>
 
-<div class="col-5 ml-3">
-        <table class="table">
+<%= link_to " カートを空にする", customer_carts_path, method: :delete, data: {confirm: 'カートを空にして本当によろしいですか？'}, class: "glyphicon glyphicon-trash btn btn-danger" %>
+
+<div class="col-10 ml-3">
+        <table class="table table-hover table-bordered">
   <thead>
+      <tr class="info">
       <th>商品名</th>
       <th>単価(税込)</th>
       <th>数量</th>
       <th>小計</th>
       <th></th>
+      </tr>
   </thead>
 
   <tbody>
@@ -18,14 +22,23 @@
 　　　    <td>
 　　　     <%= form_with model: cart, url: customer_cart_path(cart.id), method: :patch do |f| %>
 　         <%= f.select :amount, *[1..10] %>
-　         <%= f.submit '変更' %>
-           <% end %>
-           </td>
+　         <%= f.submit '変更', class: 'btn btn-success' %>
+　         <% end %>
+          </td>
 　　　    <td>¥<%= cart.subtotal %></td>
 　　　    <td><%= link_to '削除する', customer_cart_path(cart.id), method: :delete, data: {confirm: "投稿を削除します。よろしいですか？"}, class: 'btn btn-danger' %></td
 　　　  </tr>
       <% end %>
   </tbody>
 </table>
-　¥<%= @total.round.to_s(:delimited) %>
 </div>
+
+<div class="col-2 ml-2">
+<table class="table table-hover table-bordered">
+　<td>合計金額</td>
+　<td>¥<%= @total.round.to_s(:delimited) %></td>
+</table>
+</div>
+
+<%= link_to " 買い物を続ける", customer_items_path, class: "glyphicon glyphicon-shopping-cart btn btn-info" %>
+<%= link_to " 情報入力に進む", customer_items_path, data: {"turbolinks" => false}, class: "glyphicon glyphicon-pencil btn btn-success center-block" %>
