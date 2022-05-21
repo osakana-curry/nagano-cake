@@ -15,8 +15,14 @@
 　　　  <tr>
 　　　    <td><%= cart.item_id %></td>
 　　　    <td>¥<%= cart.item.add_tax_price.to_s(:delimited)  %></td>
-　　　    <td><%= cart.amount %></td>
+　　　    <td>
+　　　     <%= form_with model: cart, url: customer_cart_path(cart.id), method: :patch do |f| %>
+　         <%= f.select :amount, *[1..10] %>
+　         <%= f.submit '変更' %>
+           <% end %>
+           </td>
 　　　    <td>¥<%= cart.subtotal %></td>
+　　　    <td><%= link_to '削除する', customer_cart_path(cart.id), method: :delete, data: {confirm: "投稿を削除します。よろしいですか？"}, class: 'btn btn-danger' %></td
 　　　  </tr>
       <% end %>
   </tbody>
