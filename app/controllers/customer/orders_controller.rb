@@ -6,9 +6,22 @@ class Customer::OrdersController < ApplicationController
 
   def create
     @order = Order.new(order_params)
+    @order.customer_id = current_customer.id
     @order.save
-    redirect_to customer_confirm_path
+
+    current_customer.carts.each do |cart|
+     @order_details = OrderDetail.new #初期化宣言
+     @order_details.order_id = @order.id #order注文idを紐付けておく
+     @order_details.item_id = cart.item_id #カート内商品idを注文商品idに代入
+     @order_details.amount = cart.amount #カート内商品の個数を注文商品の個数に代入
+     @order_details.price = (cart.item.price*1.1).floor #消費税込みに計算して代入
+     @order_details.save #注文商品を保存
+    end #ループ終わり
+
+    current_customer.carts.destroy_all #カートの中身を削除
+    redirect_to  customer_complete_path
   end
+
 
   def index
   end
@@ -39,6 +52,7 @@ class Customer::OrdersController < ApplicationController
       end
 
     @carts = current_customer.carts.all
+    @order.customer_id = current_customer.id
 
   end
 

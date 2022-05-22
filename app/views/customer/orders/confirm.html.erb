@@ -15,13 +15,13 @@
       <% @carts.each do |cart| %>
         <tr>
           <td><%= cart.item.name %></td>
-          <td><%= (cart.item.price*1.08).to_i %></td>
+          <td><%= (cart.item.price*1.1).to_i %></td>
           <td><%= cart.amount %></td>
-          <td><% subtotal = ((cart.item.price*cart.amount)*1.08).to_i %> <!--小計の計算-->
+          <td><% subtotal = ((cart.item.price*cart.amount)*1.1).to_i %> <!--小計の計算-->
              <%= subtotal %><!--小計を表示-->
           </td>
         </tr>
-         <% total += (cart.item.price*cart.amount)*1.08 %> <!--アイテムごとに合計金額に加算-->
+         <% total += (cart.item.price*cart.amount)*1.1 %> <!--アイテムごとに合計金額に加算-->
       <% end %>
      </tbody>
     </table>
@@ -54,7 +54,7 @@
 
 <div class="row">
   <div class="col-sm-12 col-md-10 col-lg-10 px-10 px-sm-0 mx-auto">
-    <%= form_with model: @order, url: customer_confirm_path, method: :post, local: true do |f| %>
+    <%= form_with model: @order, url: customer_orders_path, method: :post, local: true do |f| %>
      <%= f.hidden_field :customer_id %>
      <%= f.hidden_field :delivery_fee %>
      <%= f.hidden_field :charge %>
@@ -62,8 +62,11 @@
      <%= f.hidden_field :name %>
      <%= f.hidden_field :address %>
      <%= f.hidden_field :postcode %>
-     <%= f.hidden_field :order_status %>
+
      <%= f.submit "注文を確定する", class: "btn btn-success" %>
     <% end %>
+
+    <%= link_to " 情報入力に戻る", new_customer_order_path, data: {"turbolinks" => false}, class: "btn btn-primary" %>
+
   </div>
 </div>
