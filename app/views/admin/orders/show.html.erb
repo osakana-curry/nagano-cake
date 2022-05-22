@@ -7,7 +7,7 @@
 <%= @order.created_at.strftime('%Y/%m/%d') %>
 
 <h4>配送先</h4>
-<%= "〒 #{@order.postcode} #{@order.address} #{@order.full_name}" %>
+<%= "〒 #{@order.postcode} #{@order.address}" %><br><%= "#{@order.full_name}" %>
 
 <h4>支払方法</h4>
 <%= @order.pay_type %>
