@@ -36,16 +36,16 @@
       </table>
       
       <div class="bottom">
-      	<p>
-      	  <strong>配送先</strong>
-      	  <%= link_to "一覧を見る",customer_edit_path, class: "btn btn-primary"%>
-      	  <%# 後に配送先一覧　address_path を代入%>
-      	</p>
-      	<p>
-          <strong>注文履歴</strong>
-          <%= link_to "一覧を見る",customer_edit_path, class: "btn btn-primary"%>
-          <%# 後に注文履歴　orders_path を代入%>
-      	</p>
+      	<table>
+      		<tr>
+      			<td><strong>配送先</strong></td>
+      			<td><%= link_to "一覧を見る",customer_addresses_path, class: "btn btn-primary"%></td>
+      		</tr>
+      		<tr>
+      			<td><strong>注文履歴</strong></td>
+      			<td><%= link_to "一覧を見る",customer_orders_path(@customer), class: "btn btn-primary"%></td>
+      		</tr>
+      	</table>
       </div>
 	</div>
 </div>
