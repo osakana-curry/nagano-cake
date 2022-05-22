@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
 
+  namespace :admin do
+    resources 
+  end
     namespace :customer do
       get "/"=>"customers#show"
       get "/quit" => "customers#quit"
