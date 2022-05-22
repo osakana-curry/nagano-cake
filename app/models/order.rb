@@ -15,4 +15,9 @@ class Order < ApplicationRecord
       発送準備中: 3,
       発送済み: 4
   }
+
+  def full_name
+    self.customer.last_name + self.customer.first_name
+  end
+
 end

@@ -39,7 +39,8 @@ Rails.application.routes.draw do
 
   namespace :admin do
     resources :items
-    resources :customers,only:[:show,:update,:index,:edit]
+    resources :customers,only: [:show,:update,:index,:edit]
+    resources :orders, only: [:index, :show, :update]
     #patch "/admin/customers" => "customers#update", as: 'update'
   end
 
