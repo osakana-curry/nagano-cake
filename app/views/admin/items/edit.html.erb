@@ -1,23 +1,23 @@
-<h2>商品編集</h2>
+<h2>商品編集</h2>  <!--商品編集ページ-->
 
 <%= form_with model: @item, url: admin_item_path(@item.id), method: :patch do |f| %>
-  <h4>商品画像</h4>
+  <h4>商品画像</h4>  <!--画像編集フォーム-->
   <%= f.file_field :image, accept: "image/*" %>
 
-  <h4>商品名</h4>
+  <h4>商品名</h4>  <!--商品名編集フォーム-->
   <%= f.text_field :name, placefolder: "商品名" %>
 
-  <h4>商品説明</h4>
+  <h4>商品説明</h4>  <!--商品説明編集フォーム-->
   <%= f.text_area :text, placefolder: "ここに説明文を記述します" %>
 
-  <h4>ジャンル</h4>
+  <h4>ジャンル</h4>  <!--ジャンル選択編集フォーム-->
    <%= f.collection_select(:genre_id, @genres, :id, :name) %>
 
 
-  <h4>税抜価格</h4>
+  <h4>税抜価格</h4>  <!--価格編集フォーム-->
   <%= f.text_field :price %>円
 
-  <h4>販売ステータス</h4>
+  <h4>販売ステータス</h4>  <!--販売ステータス編集-->
   <%= f.radio_button :sale_status, :販売中, checked: "checked" %>
   <%= f.label :販売中, class: "sale_status_label" %>
   <%= f.radio_button :sale_status, :販売停止中 %>
