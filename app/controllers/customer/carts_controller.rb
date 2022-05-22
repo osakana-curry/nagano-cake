@@ -1,11 +1,12 @@
 class Customer::CartsController < ApplicationController
+  include ApplicationHelper
 
-
+  before_action :set_cart, only: [:update, :destroy]
   before_action :authenticate_customer!
 
 
   def index
-    @carts = Cart.all
+    @carts = current_cart
     @total = @carts.inject(0) { |sum, item| sum + item.total }
   end
 
@@ -17,13 +18,22 @@ class Customer::CartsController < ApplicationController
   end
 
   def update
-
+    @cart = Cart.find(params[:id])
+    @numbers = @cart.amount
+    @cart.update(cart_params)
+    redirect_to customer_carts_path
   end
 
   def destroy
+    @cart.destroy
+    @cart = current_cart
+    redirect_to customer_carts_path
   end
 
   def all_destroy
+    @carts = current_customer.carts
+    @carts.destroy_all
+    redirect_to customer_carts_path
   end
 
   private
