@@ -3,6 +3,7 @@ class Customer::ItemsController < ApplicationController
   def index
     @items = Item.all
     @genres = Genre.all
+    @amount = Item.count
   end
 
   def show

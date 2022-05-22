@@ -10,16 +10,20 @@
     <% end %>
 </table>
 
-<%= image_tag @item.get_image(100,100) %>
-<%= @item.name %>
-<%= @item.text %>
-￥<%= @item.add_tax_price.to_s(:delimited) %>(税込)
+<!--商品詳細-->
+
+<%= image_tag @item.get_image(100,100) %>  <!--商品画像-->
+<%= @item.name %>  <!--商品名-->
+<%= @item.text %>  <!--商品説明文-->
+￥<%= @item.add_tax_price.to_s(:delimited) %>(税込)  <!--税込価格-->
 
 
-<%= form_with model: @cart, url: customer_carts_path, method: :post do |f| %>
-  <%= f.hidden_field :item_id, :value => @item.id  %>
-　<%= f.select :amount, *[1..10] %>
-  <%= f.submit 'カートに入れる' %>
+<%= form_with model: @cart, url: customer_carts_path, method: :post do |f| %>  <!--商品をカートに追加するフォーム-->
+  <%= f.hidden_field :item_id, :value => @item.id %>  <!--管理者でなければ商品登録はできない。今回は顧客が商品情報を入力することなく、どの商品をカートに追加するかの情報を送る-->
+　<%= f.select :amount, *[1..10] %>  <!--数量選択フォーム-->
+  <%= f.submit 'カートに入れる' %>  
 <% end %>
+
+<%= link_to "商品一覧に戻る",customer_items_path, class: "btn btn-outline-secondary" %>
 
 
