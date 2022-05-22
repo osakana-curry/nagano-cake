@@ -10,17 +10,17 @@
     <% end %>
 </table>
 
-<!--商品一覧-->
+<!--商品一覧(全X件)-->
 <h4>商品一覧<span style="font-size:20px;">（全<%= @amount %>件）</span></h4>
 
 <% @items.each do |item| %>
 
   <div>
-    <%= link_to customer_item_path(item.id) do %>
+    <%= link_to customer_item_path(item.id) do %>  <!--商品画像(詳細ページへ遷移)-->
       <%= image_tag item.get_image(200,200) %><br>
     <% end %>
-    <%= item.name %><br>
-    ￥<%= item.add_tax_price.to_s(:delimited) %>
+    <%= item.name %><br>  <!--商品名-->
+    ￥<%= item.add_tax_price.to_s(:delimited) %>  <!--税込価格-->
   </div>
 
 <% end %>
