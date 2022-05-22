@@ -5,19 +5,19 @@
     </tr>
     <% @genres.each do |genre| %>
     <tr>
-      <td><%= link_to genre.name %></td>
+      <td><%= link_to genre.name, customer_items_path(genre_id: genre.id) %></td>
     </tr>
     <% end %>
 </table>
 
-<!--商品一覧-->
-<h4>商品一覧</h4>
+<!--商品一覧(全X件)-->
+<h4>商品一覧<span style="font-size:20px;">（全<%= @amount %>件）</span></h4>
 
 <% @items.each do |item| %>
 
 <div>
   <%= link_to customer_item_path(item.id) do %>
-  <%= image_tag item.get_image(200,200) %><br>
+    <%= image_tag item.get_image(200,200) %><br>
   <% end %>
   <%= item.name %><br>
   ￥<%= item.add_tax_price.to_s(:delimited) %>
