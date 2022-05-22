@@ -42,7 +42,11 @@ Rails.application.routes.draw do
 
   namespace :admin do
     resources :items
+    resources :customers,only:[:show,:update,:index,:edit]
+    #patch "/admin/customers" => "customers#update", as: 'update'
   end
+
+
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
