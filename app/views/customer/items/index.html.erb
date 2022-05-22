@@ -15,12 +15,12 @@
 
 <% @items.each do |item| %>
 
-  <div>
-    <%= link_to customer_item_path(item.id) do %>  <!--商品画像(詳細ページへ遷移)-->
-      <%= image_tag item.get_image(200,200) %><br>
-    <% end %>
-    <%= item.name %><br>  <!--商品名-->
-    ￥<%= item.add_tax_price.to_s(:delimited) %>  <!--税込価格-->
-  </div>
+<div>
+  <%= link_to customer_item_path(item.id) do %>
+    <%= image_tag item.get_image(200,200) %><br>
+  <% end %>
+  <%= item.name %><br>
+  ￥<%= item.add_tax_price.to_s(:delimited) %>
+</div>
 
 <% end %>

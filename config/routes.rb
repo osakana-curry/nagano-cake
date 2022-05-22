@@ -14,8 +14,10 @@ Rails.application.routes.draw do
       end
 
       resources :items, only: [:index, :show]
-
       resources :addresses, only: [:index,:create,:edit,:update,:destroy]
+      resources :orders, only: [:new,:create,:index,:show]
+      post "/confirm" => "orders#confirm"
+      get "/complete" => "orders#complete"
 
     end
 
