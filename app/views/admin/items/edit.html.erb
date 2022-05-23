@@ -22,7 +22,7 @@
   <%= f.label :販売中, class: "sale_status_label" %>
   <%= f.radio_button :sale_status, :販売停止中 %>
   <%= f.label :販売停止中, class: "sale_status_label" %>
-
+  <%= link_to "削除", admin_item_path(@item), method: :delete,class: "btn btn-danger" %>
   <%= f.submit "変更を保存", class: "btn btn-success" %>
 
 <% end %>
