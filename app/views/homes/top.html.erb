@@ -1,2 +1,47 @@
-<h1>Homes#top</h1>
-<p>Find me in app/views/homes/top.html.erb</p>
+<div class="row">
+  <div class="col-xs-9">
+    <div id="slideshow">
+      <div class="welcom-text">
+        <p>
+          ようこそ、NaganoCakeへ！<br>
+          このサイトは、ケーキ販売のECサイトになります。<br>
+          会員でない方も商品の閲覧はできますが、<br>
+          購入には会員登録が必要になります。
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="top-item-index">
+      <h3 class="title">オススメ商品</h3>
+
+      <div class="row">
+        
+        <% @items.first(4).each do |item| %>
+          <%if item==nil %>
+           <div class="col-xs-3">
+                <div class="item-box">
+                  <div><%= image_tag 'no_image1.png', size: "200×200" %></div>
+                  <div>商品が追加されていません</div>
+                </div>
+            </div>
+        
+          <%else%>
+            <div class="col-xs-3">
+                <div class="item-box">
+                <%= link_to customer_item_path(item) do %>
+                  <div><%= image_tag item.get_image(200,200) %></div>
+                  <div><%= item.name %></div>
+                  <div><%=item.price %></div>
+                <% end %>
+                </div>
+            </div>
+          <%end%>
+          
+          
+        <%end%>
+          
+          
+          
+      </div>
