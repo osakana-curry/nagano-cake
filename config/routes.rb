@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
 
+  namespace :customer do
+    get 'genres/show'
+  end
     namespace :customer do
       get "/"=>"customers#show"
       get "/quit" => "customers#quit"
