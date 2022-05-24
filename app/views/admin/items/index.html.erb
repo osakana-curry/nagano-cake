@@ -1,8 +1,9 @@
 <div>  <!--商品一覧ページ-->
   <h2>商品一覧</h2>
 
-  <%= link_to "新規投稿", new_admin_item_path(@item.id) %>  <!--新規投稿フォームへ-->
-
+  <%= link_to new_admin_item_path(@item.id) do %>  <!--新規投稿フォームへ-->
+    <i class="fas fa-plus-circle fa-2x"></i>
+  <% end %>
   <table>
     <thead>
       <tr>
