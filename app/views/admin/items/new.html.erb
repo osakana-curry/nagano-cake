@@ -1,5 +1,6 @@
-<h2>商品新規登録</h2>  <!--新規投稿ページ-->
-
+<div class="row my-3">
+  <h2>商品新規登録</h2>  <!--新規投稿ページ-->
+</div>
 <% if @item.errors.any? %>
   <%= @item.errors.count %>件のエラーが発生しました
   <ul>
@@ -33,3 +34,4 @@
   <%= f.label :販売停止中, class: "sale_status_label" %>
   <%= f.submit "新規登録", class: "btn btn-success" %>
 <% end %>
+
