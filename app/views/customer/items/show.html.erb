@@ -12,7 +12,8 @@
 
 
     <%= form_with model: @cart, url: customer_carts_path, method: :post do |f| %>  <!--商品をカートに追加するフォーム-->
-     <%= f.hidden_field :item_id, :value => @item.id %>  <!--管理者でなければ商品登録はできない。今回は顧客が商品情報を入力することなく、どの商品をカートに追加するかの情報を送る-->
+     <%= f.hidden_field :item_id, :value => @item.id %><!--管理者でなければ商品登録はできない。今回は顧客が商品情報を入力することなく、どの商品をカートに追加するかの情報を送る-->
+     <%= flash[:alert] %><br>
 　   <%= f.select :amount, *[1..10], prompt: "個数選択" %> <!--数量選択フォーム-->
      <%= f.submit 'カートに入れる',class: "glyphicon glyphicon-pencil btn btn-success center-block" %><br>
 

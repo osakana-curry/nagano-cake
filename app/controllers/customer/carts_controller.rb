@@ -16,6 +16,7 @@ class Customer::CartsController < ApplicationController
     if @cart.save
       redirect_to customer_carts_path
     else
+      flash[:alert] = "個数を選択してください！"
       redirect_back(fallback_location: customer_item_path(@item.id))
     end
   end
