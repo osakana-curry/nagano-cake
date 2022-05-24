@@ -3,6 +3,7 @@
   <head>
     <title>NaganoCake</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
+    <script src="https://kit.fontawesome.com/fd5406419a.js" crossorigin="anonymous"></script>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -23,7 +24,7 @@
             <ul class="navbar-nav ml-auto">
             <% if customer_signed_in? %>
             <li class="nav-item">
-              <%= link_to 'マイページ', customer_path(current_customer.id), class: 'nav-link text-dark' %>
+              <%= link_to 'マイページ', customer_path, class: 'nav-link text-dark' %>
             </li>
             <li class="nav-item">
               <%= link_to '商品一覧', customer_items_path, class: 'nav-link text-dark' %>
@@ -57,4 +58,11 @@
     <%= yield %>
    </div>
   </body>
+
+  <footer class="footer">
+    <div class="container">
+      <p class="text-muted text-center">
+        <i class="fa-solid fa-fish"></i>fish-curry.inc<i class="fa-solid fa-fish"></i></p>
+    </div>
+</footer>
 </html>
