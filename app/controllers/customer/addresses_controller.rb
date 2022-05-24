@@ -26,8 +26,11 @@ class Customer::AddressesController < ApplicationController
 
   def update
     @address = Address.find(params[:id])
-    @address.update(address_params)
+    if @address.update(address_params)
     redirect_to customer_addresses_path
+    else
+    render :edit
+    end
   end
 
   def destroy
