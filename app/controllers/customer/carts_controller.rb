@@ -13,8 +13,11 @@ class Customer::CartsController < ApplicationController
   def create
     @item = Item.find(cart_params[:item_id])
     @cart = current_customer.carts.new(cart_params)
-    @cart.save
-    redirect_to customer_carts_path
+    if @cart.save
+      redirect_to customer_carts_path
+    else
+      redirect_back(fallback_location: customer_item_path(@item.id))
+    end
   end
 
   def update
