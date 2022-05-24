@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
 
+  namespace :customer do
+    get 'genres/show'
+  end
     namespace :customer do
       get "/"=>"customers#show"
       get "/quit" => "customers#quit"
@@ -41,6 +44,7 @@ Rails.application.routes.draw do
     resources :items
     resources :customers,only: [:show,:update,:index,:edit]
     resources :orders, only: [:index, :show, :update]
+    resources :order_details, only: [:update]
     #patch "/admin/customers" => "customers#update", as: 'update'
   end
 
