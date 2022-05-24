@@ -25,7 +25,7 @@
           <%= f.submit '変更', class: 'btn btn-success' %>
           <% end %>
           </td>
-       <td>¥<%= cart.subtotal %></td>
+       <td>¥<%= cart.subtotal.to_s(:delimited) %></td>
        <td><%= link_to '削除する', customer_cart_path(cart.id), method: :delete, data: {confirm: "投稿を削除します。よろしいですか？"}, class: 'btn btn-danger' %></td
      </tr>
       <% end %>

@@ -1,5 +1,14 @@
 <h4>配送先編集</h4>
 
+<% if @address.errors.any? %>
+  <%= @address.errors.count %>件のエラーが発生しました
+  <ul>
+    <% @address.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+  </ul>
+<% end %>
+
 <%= form_with model: @address, url:customer_address_path, method: :patch do |f| %>
 
   <p>
