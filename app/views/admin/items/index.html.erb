@@ -1,6 +1,11 @@
  <div class ="row my-5">
    <div class="col-lg-8 mt-3"><!--商品一覧ページ-->
-  <h2>商品一覧</h2>
+  <h2>
+    商品一覧
+    <%= link_to new_admin_item_path(@item.id) do %>  <!--新規投稿フォームへ-->
+     <i class="fas fa-plus-circle" style="color: #C1B4A0;"></i>
+   <% end %>
+  </h2>
 
   <table class = "table">
     <thead>
@@ -25,6 +30,5 @@
       <% end %>
     </tbody>
   </table>
-   <%= link_to "新規投稿", new_admin_item_path(@item.id),class: "glyphicon glyphicon-pencil btn btn-success center-block" %>  <!--新規投稿フォームへ-->
   </div>
 </div>
