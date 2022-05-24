@@ -4,6 +4,7 @@ ja:
       messages:
         genre_id: ジャンル
     models:
+
       address: アドレス
       genre: ジャンル
       item: 商品
