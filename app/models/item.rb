@@ -1,15 +1,16 @@
 class Item < ApplicationRecord
 
+  validates :name, presence: true
+  validates :text, presence: true
+  validates :genre_id, presence: { message: 'を選択してください。' }
+  belongs_to :genre, optional: true
+  validates :price, presence: true
+
   has_one_attached :image
 
-  belongs_to :genre
   has_many :carts
   has_many :order_details#中間テーブル
   has_many :orders, through: :order_details
-
-  validates :name, presence: true
-  validates :text, presence: true
-  validates :price, presence: true
 
 
   enum sale_status: { "販売中": 0, "販売停止中": 1 }
