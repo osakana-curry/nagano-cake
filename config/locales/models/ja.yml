@@ -1,6 +1,7 @@
 ja:
   activerecord:
     models:
+
       address: アドレス
     attributes:
       address:
