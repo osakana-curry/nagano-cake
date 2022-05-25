@@ -9,10 +9,12 @@
 
     <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag "custom", :media => "all" %>
   </head>
 
   <body>
-   <header class="shadow-sm">
+    <div class="bg_test">
+    <header class="shadow-sm">
       <nav class="navbar navbar-expand-lg navbar-light">
         <div class="container">
           <a class="navbar-brand p-3" href="/"><%= image_tag 'logo.png', size: '10px×10px' %></a>
@@ -66,12 +68,12 @@
               <%= link_to "ログイン", new_customer_session_path, class: 'nav-link text-dark' %>
             </li>
             <% end %>
-
             </ul>
           </div>
         </div>
       </nav>
     </header>
+     </div>
    <div class="container">
     <%= yield %>
    </div>
