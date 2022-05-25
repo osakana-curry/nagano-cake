@@ -1,9 +1,13 @@
-<div>  <!--商品一覧ページ-->
-  <h2>商品一覧</h2>
+ <div class ="row my-5">
+   <div class="col-lg-8 mt-3"><!--商品一覧ページ-->
+  <h2>
+    商品一覧
+    <%= link_to new_admin_item_path(@item.id) do %>  <!--新規投稿フォームへ-->
+     <i class="fas fa-plus-circle" style="color: #C1B4A0;"></i>
+   <% end %>
+  </h2>
 
-  <%= link_to "新規投稿", new_admin_item_path(@item.id) %>  <!--新規投稿フォームへ-->
-
-  <table>
+  <table class = "table">
     <thead>
       <tr>
         <th>商品ID</th>
@@ -20,8 +24,11 @@
         <td><%= link_to item.name, admin_item_path(item.id) %></td>  <!--商品名(リンクあり)-->
         <td><%= item.price.to_s(:delimited) %></td>  <!--税抜価格-->
         <td><%= item.genre.name %></td>  <!--ジャンル名-->
-        <td><%= item.sale_status %></td>  <!--販売ステータス表示-->
+        <td><%=  item.sale_status %>
+
+        </td>  <!--販売ステータス表示-->
       <% end %>
     </tbody>
   </table>
+  </div>
 </div>
