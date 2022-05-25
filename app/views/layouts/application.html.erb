@@ -13,10 +13,10 @@
   </head>
 
   <body>
-    <div class="bg_test">
+    <div class="header">
     <header class="shadow-sm">
+      <div class="container">
       <nav class="navbar navbar-expand-lg navbar-light">
-        <div class="container">
           <a class="navbar-brand p-3" href="/"><%= image_tag 'logo.png', size: '10px×10px' %></a>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
                         aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
@@ -73,16 +73,19 @@
         </div>
       </nav>
     </header>
-     </div>
+    </div>
+
    <div class="container">
     <%= yield %>
    </div>
   </body>
 
   <footer class="footer">
-    <div class="fixed-bottom" "container">
+    <div class="footer1 fixed-bottom">
       <p class="text-muted text-center">
         <i class="fa-solid fa-fish"></i>fish-curry.inc<i class="fa-solid fa-fish"></i></p>
     </div>
-</footer>
+ </footer>
+
+
 </html>
