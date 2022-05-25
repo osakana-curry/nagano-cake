@@ -1,4 +1,14 @@
-<h2>商品新規登録</h2>  <!--画像投稿ページ-->
+<div class="row my-3">
+  <h2>商品新規登録</h2>  <!--新規投稿ページ-->
+</div>
+<% if @item.errors.any? %>
+  <%= @item.errors.count %>件のエラーが発生しました
+  <ul>
+    <% @item.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+  </ul>
+<% end %>
 
 <%= form_with model: @item, url: admin_items_path do |f| %>
 
@@ -24,3 +34,4 @@
   <%= f.label :販売停止中, class: "sale_status_label" %>
   <%= f.submit "新規登録", class: "btn btn-success" %>
 <% end %>
+

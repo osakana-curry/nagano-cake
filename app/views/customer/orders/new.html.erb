@@ -1,7 +1,7 @@
 <div class= "row">
   <div class="col-sm-12 col-md-10 col-lg-10 px-10 px-sm-0 mx-auto">
     <h2>注文情報入力</h2>
-    <%= form_with model: @orders,url: customer_confirm_path, method: :post do |f| %>
+    <%= form_with model: @orders,url: customer_confirm_path, method: :get do |f| %>
      <p><strong>支払方法</strong></p>
      <%= f.radio_button :pay_type, Order.pay_types.key(0) %>
      <%= f.label :pay_type,"クレジットカード" %>
@@ -37,7 +37,8 @@
            <td><%= f.text_field :name %></td>
          </tr>
        </table>
-       <%= f.submit "確認画面へ進む",class: "btn btn-primary" %>
+       <%= link_to "カートに戻る",customer_carts_path, class: "glyphicon glyphicon-shopping-cart btn btn-info" %>
+       <%= f.submit "確認画面へ進む", class: "btn btn-primary" %>
 
     <% end %>
   </div>
