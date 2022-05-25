@@ -1,22 +1,19 @@
 ja:
   activerecord:
     models:
-
-      address: アドレス
+    address: アドレス
+    item: 商品
+    genre: ジャンル
     attributes:
       address:
         name: 宛名
         postcode: 郵便番号
         address: 住所
-
-      item: 商品
-    attributes:
       item:
         name: 商品名
         text: 商品説明
         price: 税抜価格
+      genre:
+        name: ジャンル
+        genre_id: ジャンル
 
-        genre: ジャンル
-      attributes:
-        genre:
-          name: ジャンル

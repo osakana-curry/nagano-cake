@@ -1,25 +1,23 @@
+<div class = "row my-3">
 <h2>注文履歴詳細</h2>
 
-<h4>購入者</h4>
-<%= @order.full_name %>
+  <table class = "table">
+    <tr><th>購入者</th><td><%= @order.full_name %></td></tr>
+    <tr><th>注文日</th><td><%= @order.created_at.strftime('%Y/%m/%d') %></td></tr>
+    <tr><th>配送先</th><td><%= "〒 #{@order.postcode} #{@order.address}" %><br><%= "#{@order.full_name}" %></td></tr>
+    <tr><th>支払方法</th><td><%= @order.pay_type %></td></tr>
+    <tr><th>注文ステータス</th>
+     <td><%= form_with model: @order, url: admin_order_path(@order.id), method: :patch do |f| %>
+           <%= f.select :order_status, Order.order_statuses.keys, class: "order_status" %>
+           <%= f.submit "更新" , class:"btn btn-secondary btn-sm" %>
+         <% end %>
+     </td>
+    </tr>
+  </table>
 
-<h4>注文日</h4>
-<%= @order.created_at.strftime('%Y/%m/%d') %>
-
-<h4>配送先</h4>
-<%= "〒 #{@order.postcode} #{@order.address} #{@order.full_name}" %>
-
-<h4>支払方法</h4>
-<%= @order.pay_type %>
-
-<h4>注文ステータス</h4>
-<%= form_with model: @order, url: admin_order_path(@order.id), method: :patch do |f| %>
-  <%= f.select :order_status, Order.order_statuses.keys, class: "order_status" %>
-  <%= f.submit "更新" %>
-<% end %>
-
-<table>
-  <thead>
+ <div class="col-lg-8 mt-5">
+  <table class = "table">
+   <thead class = "thead-light">
     <tr>
       <th>商品名</th>
       <th>単価(税込)</th>
@@ -27,8 +25,8 @@
       <th>小計</th>
       <th>製作ステータス</th>
     </tr>
-  </thead>
-  <tbody>
+   </thead>
+   <tbody>
     <% @order.order_details.each do |order_detail| %>
     <tr>
       <td><%= order_detail.item.name %></td>
@@ -42,10 +40,13 @@
       <td>
         <%= form_with model: order_detail, url: admin_order_detail_path(order_detail.id), method: :patch do |f| %>
           <%= f.select :production_status, OrderDetail.production_statuses.keys, class: "production_status" %>
-          <%= f.submit "更新" %>
+          <%= f.submit "更新", class:"btn btn-secondary btn-sm" %>
         <% end %>
       </td>
     </tr>
-    <% end %>
-  </tbody>
-</table>
+   <% end %>
+   </tbody>
+  </table>
+   <%= link_to "注文一覧に戻る",admin_orders_path, class: "btn btn-outline-secondary" %>
+ </div>
+</div>
