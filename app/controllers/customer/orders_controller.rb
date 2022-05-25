@@ -1,4 +1,7 @@
 class Customer::OrdersController < ApplicationController
+
+  before_action :authenticate_customer!
+
   def new #注文情報入力画面
     @orders = Order.new
     @addresses = Address.where(customer_id: current_customer.id)
