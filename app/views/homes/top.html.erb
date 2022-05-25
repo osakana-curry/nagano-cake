@@ -6,30 +6,31 @@
       <p class="d-flex justify-content-center">このサイトは、ケーキ販売のECサイトになります</p>
       <p class="d-flex justify-content-center">会員でない方も商品の閲覧はできますが、</p>
       <p class="d-flex justify-content-center">購入には会員登録が必要になります。</p>
-      </p>
+
     </div>
+</div>
+
+
+<div class="row">
+  <div class="col">
+    <h3>新着商品</h3>
   </div>
 </div>
 
-<div class="top-item-index">
-      <h3 class="title font-weight-bold">新着商品</h3>
-
-      <div class="row">
-
-        <% @items.last(4).each do |item| %>
-        <div class="col-sm">
-          <%if item.sale_status=="販売中" %>
-            <div class="item-box">
-            <%= link_to customer_item_path(item) do %>
-              <div><%= image_tag item.get_image(200,200) %></div>
-              <div class="font-weight-bold text-dark"><%= item.name %></div>
-              <div class="font-weight-bold text-dark"><%= item.price.to_s(:delimited) %>円(税込)</div>
-            <% end %>
-            </div>
+  <div class="row">
+      <% @items.last(4).each do |item| %>
+    <div class="col d-flex align-items-center">
+       <%if item.sale_status=="販売中" %>
+         <div class="item-box">
+         <%= link_to customer_item_path(item) do %>
+          <div><%= image_tag item.get_image(200,200) %></div>
+          <div class="font-weight-bold text-dark"><%= item.name %></div>
+          <div class="font-weight-bold text-dark"><%= item.price.to_s(:delimited) %>円(税込)</div>
+        <% end %>
         </div>
-          <%end%>
-        <%end%>
-      </div>
+    </div>
+       <%end%>
+     <%end%>
   </div>
 
     <div class="d-flex flex-row-reverse bd-highlight">
@@ -39,3 +40,6 @@
       <%end%>
       </div>
     </div>
+  </div>
+
+
