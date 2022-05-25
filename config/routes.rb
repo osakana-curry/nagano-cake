@@ -37,7 +37,7 @@ Rails.application.routes.draw do
   get 'homes/about' => "homes#about", as: "about"
 
   namespace :admin do
-    resources :genres, only: [:create, :update, :index, :edit]
+    resources :genres, only: [:create, :update, :index, :edit, :destroy]
   end
 
   namespace :admin do

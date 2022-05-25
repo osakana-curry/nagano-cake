@@ -1,13 +1,9 @@
 ja:
   activerecord:
-    errors:
-      messages:
-        genre_id: ジャンル
     models:
-
-      address: アドレス
-      genre: ジャンル
-      item: 商品
+    address: アドレス
+    item: 商品
+    genre: ジャンル
     attributes:
       address:
         name: 宛名
@@ -18,5 +14,6 @@ ja:
         text: 商品説明
         price: 税抜価格
       genre:
-        name: ジャンル名
+        name: ジャンル
         genre_id: ジャンル
+
