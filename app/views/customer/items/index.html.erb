@@ -1,26 +1,20 @@
 <!--ジャンル検索-->
-<table>
-    <tr>
-      <th>ジャンル検索</th>
-    </tr>
-    <% @genres.each do |genre| %>
-    <tr>
-      <td><%= link_to genre.name, customer_items_path(genre_id: genre.id) %></td>
-    </tr>
-    <% end %>
-</table>
 
 <!--商品一覧(全X件)-->
-<h4>商品一覧<span style="font-size:20px;">（全<%= @amount %>件）</span></h4>
+<h3 class="title font-weight-bold">商品一覧（全<%= @amount %>件)</h3>
 
-<% @items.each do |item| %>
-
-<div>
-  <%= link_to customer_item_path(item.id) do %>
-    <%= image_tag item.get_image(200,200) %><br>
+ <div class="row">
+  <% @items.each do |item| %>
+  <div class="col-sm-3 mx-auto align-self-end ">
+   <%= link_to customer_item_path(item.id) do %>
+    <p><%= image_tag item.get_image(200,200) %></p>
   <% end %>
-  <%= item.name %><br>
-  ￥<%= item.price.to_s(:delimited) %>
-</div>
+     <div>
+       <%= item.name %><br>
+     ￥<%= item.price.to_s(:delimited) %>
+     </div>
+ </div>
 
-<% end %>
+ <% end %>
+
+</div>
