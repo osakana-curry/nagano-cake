@@ -22,7 +22,7 @@
   <%= f.text_area :text, placeholder: "ここに説明文を記述します" %>
 
   <h4>ジャンル</h4>  <!--ジャンル選択フォーム-->
-  <%= f.collection_select(:genre_id, @genres, :id, :name, prompt: "--選択してください--")%>
+  <%= f.collection_select(:genre_id, @genres, :id, :name, prompt: "--選択してください--") %>
 
   <h4>税抜価格</h4>  <!--税抜価格投稿フォーム-->
   <%= f.text_field :price %>円
