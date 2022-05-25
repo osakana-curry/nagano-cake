@@ -6,7 +6,7 @@ class Item < ApplicationRecord
   validates :price, presence: true
 
   has_one_attached :image
-  has_many :carts
+  has_many :carts#中間テーブル
   has_many :order_details#中間テーブル
   has_many :orders, through: :order_details
 
