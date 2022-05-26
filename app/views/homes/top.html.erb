@@ -1,12 +1,14 @@
 <div class="row">
-    <div class="mx-auto">
-      <h3 class="font-weight-bold text-dark d-flex justify-content-center">Welcome</h3><br>
+    <div class="mx-auto my-5">
+      <h2 class="font-weight-bold text-dark d-flex justify-content-center">Welcome</h2><br>
       <p class="d-flex justify-content-center">ようこそ、NaganoCakeへ！</p>
       <p class="d-flex justify-content-center">このサイトは、ケーキ販売のECサイトになります</p>
       <p class="d-flex justify-content-center">会員でない方も商品の閲覧はできますが、</p>
       <p class="d-flex justify-content-center">購入には会員登録が必要になります。</p>
   </div>
 </div>
+
+
 
 
 <div class="row justify-content-center">
@@ -16,9 +18,9 @@
 </div>
 
 <div class="row justify-content-center">
-    <% @items.last(4).each do |item| %>
+    <% @items.last(6).each do |item| %>
     <div class="d-flex justify-content-evenly">
-      <div class="p-2 bd-highlight">
+      <div class="px-5 py-1 bd-highlight">
         <%if item.sale_status=="販売中" %>
          <%= link_to customer_item_path(item) do %>
           <div><%= image_tag item.get_image(200,200) %></div>
