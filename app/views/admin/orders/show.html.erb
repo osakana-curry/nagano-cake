@@ -49,4 +49,17 @@
   </table>
    <%= link_to "注文一覧に戻る",admin_orders_path, class: "btn btn-outline-secondary" %>
  </div>
+
+<% total = 0 %>
+<% @orders.each do |order| %>
+<% total += (@cart.price*o@cart.amount)*1.1 %> <!--アイテムごとに合計金額に加算-->
+
+ <label>商品合計</label>
+ <%= total.round.to_s(:delimited) %>
+
+ <label>送料</label>
+ <%= order.delivery_fee %>
+
+ <% end %>
+
 </div>
