@@ -1,9 +1,9 @@
-![logo](https://user-images.githubusercontent.com/102849653/170404211-1ae750b1-64da-4e85-ab05-73a78c999ea8.png)
+<img src="https://user-images.githubusercontent.com/102849653/170404211-1ae750b1-64da-4e85-ab05-73a78c999ea8.png" width="100%">
 
 # ながのCAKE
 
 長野県にある小さな洋菓子店、「ながのCAKE」の商品を通販するためのECサイト。
-元々近隣樹民が主な顧客だったが、昨年始めたInstagramから人気となり、全国から注文が来るようになった。
+元々近隣樹民が主な顧客だったが、昨年始めたInstagramから人気となり、全国から注文が来るようになった。<br>
 InstagramのDMやメールで通販の注文を受けていたが、情報管理が煩雑になってきたため、管理機能を含んだ通販サイトを開設しようと思い至った。
 
 # 通販について
@@ -53,24 +53,24 @@ InstagramのDMやメールで通販の注文を受けていたが、情報管理
 
 ## インストール
 
-$ git clone git@github.com:osakana-curry/nagano-cake.git
-or
-$ git clone https://github.com/osakana-curry/nagano-cake.git
-$ cd nagano-cake
-$ bundle install
-$ rails db:migrate
-$ rails db:seed
+$ git clone git@github.com:osakana-curry/nagano-cake.git<br>
+or<br>
+$ git clone https://github.com/osakana-curry/nagano-cake.git<br>
+$ cd nagano-cake<br>
+$ bundle install<br>
+$ rails db:migrate<br>
+$ rails db:seed<br>
 $ rails s
 
 ## テスト
 
 ターミナル(もしくはコマンドプロンプト)で上記の作業を行った後、ローカルサーバーにアクセスしてご覧ください。
 
-【管理者用アカウント：ログイン】
-メールアドレス：ddd@eee
+【管理者用アカウント：ログイン】<br>
+メールアドレス：ddd@eee<br>
 パスワード：cccccc
 
-【顧客用アカウント：ログイン】
+【顧客用アカウント：ログイン】<br>
 登録画面にて新規登録を行ってください。
 
 # 使用言語
@@ -79,7 +79,7 @@ $ rails s
 - Ruby
 - Javascript
 - フレームワーク
-〇 Ruby on Rails(6.1.6)
+- Ruby on Rails(6.1.6)
 
 # Gem
 
