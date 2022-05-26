@@ -6,7 +6,7 @@ class Item < ApplicationRecord
   validates :price, presence: true
 
   has_one_attached :image
-  has_many :carts
+  has_many :carts#中間テーブル
   has_many :order_details#中間テーブル
   has_many :orders, through: :order_details
 
@@ -19,7 +19,7 @@ class Item < ApplicationRecord
 
   def get_image(width, height)
     unless image.attached?
-      file_path = Rails.root.join('app/assets/images/no_image.jpg')
+      file_path = Rails.root.join('app/assets/images/no_image1.png')
       image.attach(io: File.open(file_path), filename: 'default-image.jpg', content_type: 'image/jpeg')
     end
     image.variant(resize_to_limit: [width, height]).processed

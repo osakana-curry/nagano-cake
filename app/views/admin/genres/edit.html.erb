@@ -13,11 +13,12 @@
         <%= f.text_field :name,class:"form-control" %>
       </div>
       <div class="col-md justify-content-around">
+        <%= f.submit '変更を保存', class:"btn btn-success" %><br>
+        <%= link_to "ジャンル一覧に戻る", admin_genres_path,class:"btn btn-outline-secondary" %>
+
         <%= link_to admin_genres_path do %>
          <i class="fa-solid fa-circle-chevron-left fa-2x" style="color: #352B30;"></i>
         <% end %>
-        <%= f.submit '変更を保存', class:"btn btn-success" %>
-        <%= link_to "削除", admin_genre_path(@genre.id), method: :delete, "data-confirm" => "本当に削除しますか？",class:"btn btn-danger" %>
       </div>
       <% end %>
     </div>

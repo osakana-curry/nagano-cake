@@ -1,10 +1,9 @@
 class Customer::ItemsController < ApplicationController
 
   def index
-    @items = Item.all.page(params[:page]).per(8)
+    @items = Item.order("created_at desc").page(params[:page]).per(8)
     @genres = Genre.all
     @amount = Item.count
-
   end
 
   def show
