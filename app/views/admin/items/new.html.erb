@@ -17,13 +17,13 @@
   <tr><th>商品説明</th><td style = "border-top: none;"> <%= f.text_area :text, placeholder: "ここに説明文を記述します" %></td></tr><!--商品説明投稿フォーム-->
   <tr><th>ジャンル</th><td style = "border-top: none;"> <%= f.collection_select(:genre_id, @genres, :id, :name, prompt: "--選択してください--") %></td></tr> <!--ジャンル選択フォーム-->
   <tr><th>税抜価格</th><td style = "border-top: none;"> <%= f.text_field :price %>円</td></tr> <!--税抜価格投稿フォーム-->
-  <tr><th>販売ステータス</th>
+  <tr><th>販売ステータス</th><!--販売ステータス選択フォーム-->
    <td style = "border-top: none;"><%= f.radio_button :sale_status, :販売中, checked: "checked" %>
       <%= f.label :販売中, class: "sale_status_label" %>
       <%= f.radio_button :sale_status, :販売停止中 %>
       <%= f.label :販売停止中, class: "sale_status_label" %>
    </td>
-  </tr> <!--販売ステータス選択フォーム-->
+  </tr>
  </table>
    <%= f.submit "新規登録", class: "btn btn-success" %>
 <% end %>
