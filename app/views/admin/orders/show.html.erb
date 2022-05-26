@@ -31,11 +31,13 @@
     <tr>
       <td><%= order_detail.item.name %></td>
       <td>
-        <%= (order_detail.item.price * 1.1).round.to_s(:delimited) %>
+        <%= subtotal = ((order_detail.item.price)*1.1).round.to_s(:delimited) %>
       </td>
       <td><%= order_detail.amount %></td>
       <td>
-        <%= ((order_detail.item.price * 1.1)* order_detail.amount).round.to_s(:delimited) %>
+        <% total = 0 %>
+          <% total += order_detail.amount*((order_detail.item.price)*1.1).round.to_i %>
+            <%= total.to_s(:delimited) %>
       </td>
       <td>
         <%= form_with model: order_detail, url: admin_order_detail_path(order_detail.id), method: :patch do |f| %>
@@ -49,4 +51,32 @@
   </table>
    <%= link_to "注文一覧に戻る",admin_orders_path, class: "btn btn-outline-secondary" %>
  </div>
+
+  <div class="col-sm-3 col-md-3 col-lg-3 px-3 offset-1">
+    <table class="table table-bordered">
+      <tr class="thead-light">
+        <th>商品合計</th>
+        <td>
+           <% total = 0 %>
+          <% @order.order_details.each do |order_detail| %>
+            <% total += order_detail.amount*((order_detail.item.price)*1.1).round.to_i %>
+          <% end %>
+          <%= total.to_s(:delimited) %>
+        </td>
+      </tr>
+      <tr class="thead-light">
+        <th>送料</th>
+        <td><%= @order.delivery_fee.to_s(:delimited) %></td>
+      </tr>
+      <tr class="thead-light">
+        <th>請求金額合計</th>
+        <td>
+          <% @order.charge = @order.delivery_fee + total.to_i %>
+          <%= @order.charge.to_s(:delimited) %>
+        </td>
+      </tr>
+    </table>
+  </div>
 </div>
+
+

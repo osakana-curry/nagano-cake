@@ -13,12 +13,12 @@
      <tbody>
      <% total = 0 %>
       <% @carts.each do |cart| %>
-      <% total += (cart.item.price*cart.amount)*1.1 %> <!--アイテムごとに合計金額に加算-->
+      <% total += ((cart.item.price*cart.amount)*1.1).round.to_i %> <!--アイテムごとに合計金額に加算-->
         <tr>
           <td><%= cart.item.name %></td>
-          <td><%= (cart.item.price*1.1).to_i %></td>
+          <td><%= (cart.item.price*1.1).round.to_s(:delimited) %></td>
           <td><%= cart.amount %></td>
-          <td><% subtotal = ((cart.item.price*cart.amount)*1.1).to_i %> <!--小計の計算-->
+          <td><% subtotal = ((cart.item.price*cart.amount)*1.1).round.to_i %> <!--小計の計算-->
              <%= subtotal.to_s(:delimited) %><!--小計を表示-->
           </td>
         </tr>
@@ -37,8 +37,9 @@
   <div class="col-sm-3 col-md-3 col-lg-3 px-3 offset-1">
     <table class="table">
      <tr>
-       <th>送料</th><% @order.delivery_fee = 800 %>
-       <td><%= @order.delivery_fee %></td>
+       <th>送料</th>
+       <% @order.delivery_fee = 800 %>
+       <td><%= @order.delivery_fee.to_s(:delimited) %></td>
      </tr>
      <tr>
        <th>商品合計</th>
@@ -47,7 +48,7 @@
      <tr>
        <th>請求金額</th>
        <% @order.charge = @order.delivery_fee + total.to_i %>
-       <td><%= @order.charge.to_s(:delimited) %></td>
+       <td><%= @order.charge.round.to_s(:delimited) %></td>
      </tr>
     </table>
   </div>
