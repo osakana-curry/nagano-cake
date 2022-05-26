@@ -1,5 +1,27 @@
 Rails.application.routes.draw do
 
+    namespace :customer do
+      get "/"=>"customers#show"
+      get "/quit" => "customers#quit"
+      get "/out" => "customers#out", as: 'out'
+      get "/edit"=>"customers#edit"
+      patch "/" =>"customers#update", as: 'update'
+
+      get 'genres/show'
+
+      get "/confirm" => "orders#confirm"
+      get "/complete" => "orders#complete"
+
+      resources :carts,only: [:index,:update,:create,:destroy] do
+        collection do
+          delete '/' => 'carts#all_destroy'
+        end
+      end
+
+      resources :items, only: [:index, :show]
+      resources :addresses, only: [:index,:create,:edit,:update,:destroy]
+      resources :orders, only: [:new,:create,:index,:show]
+    end
 
   devise_for :admin, skip: [:registrations, :passwords], controllers: {
     sessions: "admin/sessions"
@@ -14,29 +36,6 @@ Rails.application.routes.draw do
   root to: 'homes#top'
   get 'homes/about' => "homes#about", as: "about"
 
-  namespace :customer do
-    get "/"=>"customers#show"
-    get "/quit" => "customers#quit"
-    get "/out" => "customers#out", as: 'out'
-    get "/edit"=>"customers#edit"
-    patch "/" =>"customers#update", as: 'update'
-
-    get 'genres/show'
-
-    get "/confirm" => "orders#confirm"
-    get "/complete" => "orders#complete"
-
-    resources :carts,only: [:index,:update,:create,:destroy] do
-      collection do
-        delete '/' => 'carts#all_destroy'
-      end
-    end
-
-    resources :items, only: [:index, :show]
-    resources :addresses, only: [:index,:create,:edit,:update,:destroy]
-    resources :orders, only: [:new,:create,:index,:show]
-  end
-
   namespace :admin do
     resources :genres, only: [:create, :update, :index, :edit, :destroy]
     resources :items
@@ -45,6 +44,8 @@ Rails.application.routes.draw do
     resources :order_details, only: [:update]
     #patch "/admin/customers" => "customers#update", as: 'update'
   end
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 
+
+
+  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
