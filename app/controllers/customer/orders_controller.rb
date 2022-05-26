@@ -27,7 +27,7 @@ class Customer::OrdersController < ApplicationController
 
 
   def index
-    @orders = Order.all
+    @orders = current_customer.orders
   end
 
   def show
