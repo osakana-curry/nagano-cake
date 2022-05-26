@@ -1,8 +1,8 @@
 <div class= "row">
   <div class="col-sm-8 col-md-8 col-lg-8 px-8">
     <h2>注文情報確認</h2>
-    <table class="table" style="table-layout:fixed;">
-      <thead>
+    <table class="table table-bordered" style="table-layout:fixed;">
+      <thead class = "thead-light">
         <tr>
          <th>商品名</th>
          <th>単価(税込)</th>
@@ -28,23 +28,23 @@
     </table>
 
     <table>
-      <tr><th>支払方法</th></tr>
-    　<td><%= @order.pay_type %></td>
-    　<tr><th>お届け先</th></tr>
-    　<td><%= "〒 #{@order.postcode} #{@order.address} #{@order.name}" %></td>
+     <tr><th>支払方法</th></tr>
+     <td><%= @order.pay_type %></td>
+     <tr><th>お届け先</th></tr>
+     <td><%= "〒 #{@order.postcode} #{@order.address} #{@order.name}" %></td>
     </table>
   </div>
   <div class="col-sm-3 col-md-3 col-lg-3 px-3 offset-1">
-    <table class="table">
-     <tr>
+    <table class="table table-bordered">
+     <tr class = "thead-light">
        <th>送料</th><% @order.delivery_fee = 800 %>
        <td><%= @order.delivery_fee %></td>
      </tr>
-     <tr>
+     <tr class = "thead-light">
        <th>商品合計</th>
        <td><%= total.round.to_s(:delimited) %></td>
      </tr>
-     <tr>
+     <tr class = "thead-light">
        <th>請求金額</th>
        <% @order.charge = @order.delivery_fee + total.to_i %>
        <td><%= @order.charge.to_s(:delimited) %></td>
@@ -63,10 +63,13 @@
      <%= f.hidden_field :name %>
      <%= f.hidden_field :address %>
      <%= f.hidden_field :postcode %>
-
+     <div class="mt-5 mx-auto" style="width: 200px;">
      <%= f.submit "注文を確定する", class: "btn btn-success" %>
+     </div>
     <% end %>
-    <%= link_to " 情報入力に戻る", new_customer_order_path, data: {"turbolinks" => false}, class: "btn btn-primary" %>
+
+     <%= link_to " 情報入力に戻る", new_customer_order_path, data: {"turbolinks" => false}, class: "btn btn-outline-secondary" %>
+
 
   </div>
 </div>
