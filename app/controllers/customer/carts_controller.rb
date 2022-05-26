@@ -13,6 +13,12 @@ class Customer::CartsController < ApplicationController
   def create
     @item = Item.find(cart_params[:item_id])
     @cart = current_customer.carts.new(cart_params)
+    @update_cart =  Cart.find_by(item: @cart.item)
+    if @update_cart.present? && @cart.valid?
+        @cart.amount += @update_cart.amount
+        @update_cart.destroy
+    end
+
     if @cart.save
       redirect_to customer_carts_path
     else
