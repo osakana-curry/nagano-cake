@@ -1,9 +1,9 @@
 ja:
   activerecord:
     models:
-    address: アドレス
-    item: 商品
-    genre: ジャンル
+      address: アドレス
+      item: 商品
+      genre: ジャンル
     attributes:
       address:
         name: 宛名

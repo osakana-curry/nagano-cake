@@ -14,7 +14,7 @@ class ApplicationController < ActionController::Base
     if resource == :admin
        admin_session_path
     else
-       about_path
+       root_path
     end
   end
 

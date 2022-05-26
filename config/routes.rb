@@ -1,14 +1,16 @@
 Rails.application.routes.draw do
 
-  namespace :customer do
-    get 'genres/show'
-  end
     namespace :customer do
       get "/"=>"customers#show"
       get "/quit" => "customers#quit"
       get "/out" => "customers#out", as: 'out'
       get "/edit"=>"customers#edit"
       patch "/" =>"customers#update", as: 'update'
+
+      get 'genres/show'
+
+      get "/confirm" => "orders#confirm"
+      get "/complete" => "orders#complete"
 
       resources :carts,only: [:index,:update,:create,:destroy] do
         collection do
@@ -19,15 +21,13 @@ Rails.application.routes.draw do
       resources :items, only: [:index, :show]
       resources :addresses, only: [:index,:create,:edit,:update,:destroy]
       resources :orders, only: [:new,:create,:index,:show]
-      get "/confirm" => "orders#confirm"
-      get "/complete" => "orders#complete"
-
     end
 
   devise_for :admin, skip: [:registrations, :passwords], controllers: {
     sessions: "admin/sessions"
   }
   #registrationを除外して、新規登録するページを無くした
+
   devise_for :customers, skip: [:passwords], controllers: {
     registrations: "customer/registrations",
     sessions: 'customer/sessions'
@@ -38,9 +38,6 @@ Rails.application.routes.draw do
 
   namespace :admin do
     resources :genres, only: [:create, :update, :index, :edit, :destroy]
-  end
-
-  namespace :admin do
     resources :items
     resources :customers,only: [:show,:update,:index,:edit]
     resources :orders, only: [:index, :show, :update]
