@@ -7,10 +7,11 @@
     <tr><th>配送先</th><td><%= "〒 #{@order.postcode} #{@order.address}" %><br><%= "#{@order.full_name}" %></td></tr>
     <tr><th>支払方法</th><td><%= @order.pay_type %></td></tr>
     <tr><th>注文ステータス</th>
-     <td><%= form_with model: @order, url: admin_order_path(@order.id), method: :patch do |f| %>
-           <%= f.select :order_status, Order.order_statuses.keys, class: "order_status" %>
-           <%= f.submit "更新" , class:"btn btn-secondary btn-sm" %>
-         <% end %>
+     <td>
+       <%= form_with model: @order, url: admin_order_path(@order.id), method: :patch do |f| %>
+         <%= f.select :order_status, Order.order_statuses.keys, class: "order_status" %>
+         <%= f.submit "更新" , class:"btn btn-secondary btn-sm" %>
+       <% end %>
      </td>
     </tr>
   </table>
@@ -36,8 +37,8 @@
       <td><%= order_detail.amount %></td>
       <td>
         <% total = 0 %>
-          <% total += order_detail.amount*((order_detail.item.price)*1.1).round.to_i %>
-            <%= total.to_s(:delimited) %>
+        <% total += order_detail.amount*((order_detail.item.price)*1.1).round.to_i %>
+        <%= total.to_s(:delimited) %>
       </td>
       <td>
         <%= form_with model: order_detail, url: admin_order_detail_path(order_detail.id), method: :patch do |f| %>
@@ -57,7 +58,7 @@
       <tr class="thead-light">
         <th>商品合計</th>
         <td>
-           <% total = 0 %>
+          <% total = 0 %>
           <% @order.order_details.each do |order_detail| %>
             <% total += order_detail.amount*((order_detail.item.price)*1.1).round.to_i %>
           <% end %>

@@ -9,20 +9,20 @@
          <th>数量</th>
          <th>小計</th>
         </tr>
-     </thead>
-     <tbody>
-     <% total = 0 %>
+      </thead>
+      <tbody>
+      <% total = 0 %>
       <% @carts.each do |cart| %>
-      <% total += ((cart.item.price*cart.amount)*1.1).round.to_i %> <!--アイテムごとに合計金額に加算-->
+        <% total += ((cart.item.price*cart.amount)*1.1).round.to_i %> <!--アイテムごとに合計金額に加算-->
         <tr>
           <td><%= cart.item.name %></td>
           <td><%= (cart.item.price*1.1).round.to_s(:delimited) %></td>
           <td><%= cart.amount %></td>
-          <td><% subtotal = ((cart.item.price*cart.amount)*1.1).round.to_i %> <!--小計の計算-->
-             <%= subtotal.to_s(:delimited) %><!--小計を表示-->
+          <td>
+            <% subtotal = ((cart.item.price*cart.amount)*1.1).round.to_i %> <!--小計の計算-->
+            <%= subtotal.to_s(:delimited) %><!--小計を表示-->
           </td>
         </tr>
-
       <% end %>
      </tbody>
     </table>
@@ -34,21 +34,22 @@
      <td><%= "〒 #{@order.postcode} #{@order.address} #{@order.name}" %></td>
     </table>
   </div>
+
   <div class="col-sm-3 col-md-3 col-lg-3 px-3 offset-1">
     <table class="table table-bordered">
-     <tr class = "thead-light">
-       <th>送料</th><% @order.delivery_fee = 800 %>
-       <td><%= @order.delivery_fee.to_s(:delimited) %></td>
-     </tr>
-     <tr class = "thead-light">
-       <th>商品合計</th>
-       <td><%= total.round.to_s(:delimited) %></td>
-     </tr>
-     <tr class = "thead-light">
-       <th>請求金額</th>
-       <% @order.charge = @order.delivery_fee + total.to_i %>
-       <td><%= @order.charge.round.to_s(:delimited) %></td>
-     </tr>
+      <tr class = "thead-light">
+        <th>送料</th><% @order.delivery_fee = 800 %>
+        <td><%= @order.delivery_fee.to_s(:delimited) %></td>
+      </tr>
+      <tr class = "thead-light">
+        <th>商品合計</th>
+        <td><%= total.round.to_s(:delimited) %></td>
+      </tr>
+      <tr class = "thead-light">
+        <th>請求金額</th>
+        <% @order.charge = @order.delivery_fee + total.to_i %>
+        <td><%= @order.charge.round.to_s(:delimited) %></td>
+      </tr>
     </table>
   </div>
 </div>
@@ -56,20 +57,17 @@
 <div class="row">
   <div class="col-sm-12 col-md-10 col-lg-10 px-10 px-sm-0 mx-auto">
     <%= form_with model: @order, url: customer_orders_path, method: :post, local: true do |f| %>
-     <%= f.hidden_field :customer_id %>
-     <%= f.hidden_field :delivery_fee %>
-     <%= f.hidden_field :charge %>
-     <%= f.hidden_field :pay_type %>
-     <%= f.hidden_field :name %>
-     <%= f.hidden_field :address %>
-     <%= f.hidden_field :postcode %>
-     <div class="mt-5 mx-auto" style="width: 200px;">
-     <%= f.submit "注文を確定する", class: "btn btn-success" %>
-     </div>
+      <%= f.hidden_field :customer_id %>
+      <%= f.hidden_field :delivery_fee %>
+      <%= f.hidden_field :charge %>
+      <%= f.hidden_field :pay_type %>
+      <%= f.hidden_field :name %>
+      <%= f.hidden_field :address %>
+      <%= f.hidden_field :postcode %>
+      <div class="mt-5 mx-auto" style="width: 200px;">
+      <%= f.submit "注文を確定する", class: "btn btn-success" %>
+      </div>
     <% end %>
-
-     <%= link_to " 情報入力に戻る", new_customer_order_path, data: {"turbolinks" => false}, class: "btn btn-outline-secondary" %>
-
-
+      <%= link_to " 情報入力に戻る", new_customer_order_path, data: {"turbolinks" => false}, class: "btn btn-outline-secondary" %>
   </div>
 </div>
