@@ -1,6 +1,9 @@
 class Admin::ItemsController < ApplicationController
+
+  before_action :authenticate_admin!
+
   def index
-    @items = Item.all
+    @items = Item.order("created_at desc").page(params[:page]).per(10)
     @item = Item.new
   end
 
@@ -10,9 +13,13 @@ class Admin::ItemsController < ApplicationController
   end
 
   def create
-    item = Item.new(item_params)
-    item.save
-    redirect_to admin_items_path
+    @item = Item.new(item_params)
+    if @item.save
+      redirect_to admin_items_path
+    else
+      @genres = Genre.all
+      render:new
+    end
   end
 
   def show
@@ -29,7 +36,7 @@ class Admin::ItemsController < ApplicationController
     @item.update(item_params)
     redirect_to admin_item_path(@item.id)
   end
-  
+
   def destroy
     @item=Item.find(params[:id])
     @item.destroy
