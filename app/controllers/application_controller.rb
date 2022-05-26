@@ -3,7 +3,11 @@ class ApplicationController < ActionController::Base
    before_action :configure_permitted_parameters, if: :devise_controller?
 
   def after_sign_out_path_for(resource)
-   about_path
+    if resource == :admin
+       admin_session_path
+    else
+       about_path
+    end
   end
 
 

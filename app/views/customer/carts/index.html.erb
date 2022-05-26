@@ -1,12 +1,10 @@
 <div class ="row my-5">
-   <div class="col-lg-8 mt-3">
+   <div class="col-lg-10 mt-3">
      <h2>ショッピングカート</h2>
-   </div>
-</div>
 
 <% if @carts.present? %>
-  <div class="text-right">
-   <%= link_to " カートを空にする", customer_carts_path, method: :delete, data: {confirm: 'カートを空にして本当によろしいですか？'}, class: "glyphicon glyphicon-trash btn btn-danger" %>
+  <div class="float-right">
+    <%= link_to " カートを空にする", customer_carts_path, method: :delete, data: {confirm: 'カートを空にして本当によろしいですか？'}, class: "glyphicon glyphicon-trash btn btn-danger" %>
   </div>
 
 <div class="col-10 ml-3">
@@ -53,7 +51,7 @@
 
 <div class="float-left">
   <div class ="action">
-   <%= link_to " 買い物を続ける", customer_items_path, class: "glyphicon glyphicon-shopping-cart btn btn-info" %>
+   <%= link_to " 買い物を続ける", root_path, class: "glyphicon glyphicon-shopping-cart btn btn-info" %>
   </div>
 </div>
 
@@ -65,3 +63,6 @@
   <p>お客様のショッピングカートに商品はありません。</p>
   <p><%= link_to "商品一覧", customer_items_path, class: "btn-link" %>から商品をお探し下さい。</p>
 <% end %>
+
+   </div>
+</div>
