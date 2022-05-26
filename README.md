@@ -1,4 +1,4 @@
-<img src="https://user-images.githubusercontent.com/102849653/170404211-1ae750b1-64da-4e85-ab05-73a78c999ea8.png" width="100%">
+![logo](https://user-images.githubusercontent.com/102849653/170404211-1ae750b1-64da-4e85-ab05-73a78c999ea8.png)
 
 # ながのCAKE
 
