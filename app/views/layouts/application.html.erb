@@ -24,6 +24,16 @@
             <span class="navbar-toggler-icon"></span>
           </button>
           <div class="collapse navbar-collapse" id="navbarNavDropdown">
+            <% if customer_signed_in? %>
+            <div class="mx-auto" style="color:#66583f">
+             <label>ようこそ<%= current_customer.last_name %>さん！</label>
+            </div>
+            <% end %>
+            <% if admin_signed_in? %>
+            <div class="mx-auto" style="color:#66583f">
+             <label>おつかれさま！</label>
+            </div>
+            <% end %>
             <ul class="navbar-nav ml-auto">
             <% if customer_signed_in? %>
             <li class="nav-item">
