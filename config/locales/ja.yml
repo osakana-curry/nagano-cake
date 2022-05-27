@@ -1,4 +1,34 @@
 ja:
+  activerecord:
+    attributes:
+      address:
+        postcode: 郵便番号
+        name: 宛名
+        address: 住所
+      customer:
+        last_name: 姓
+        first_name: 名
+        last_name_kana: 姓(カナ)
+        first_name_kana: 名(カナ)
+        postcode: 郵便番号
+        address: 住所
+        phone_number: 電話番号
+        email: メールアドレス
+        password: パスワード
+      cart:
+        amount: 数量
+      genre:
+        name: ジャンル名
+      item:
+        text: 商品説明
+        price: 税抜価格
+        genre: ジャンル
+        genre_id: ジャンル
+      order:
+        postcode: 郵便番号
+        address: 住所
+        name: 宛名
+
 
   enums:
     item:
@@ -13,5 +43,4 @@ ja:
       previous: <i class="fas fa-angle-left"></i>
       next: <i class="fas fa-angle-right"></i>
       truncate: "..."
-      
-  
+
