@@ -12,9 +12,10 @@ ja:
         first_name_kana: 名(カナ)
         postcode: 郵便番号
         address: 住所
-        phone_number: 電話番号
+        phone_number: 電話番号（ハイフンなし）
         email: メールアドレス
         password: パスワード
+        password_confirmation: 確認用パスワード
       cart:
         amount: 数量
       genre:
