@@ -19,7 +19,7 @@
 <div class="row justify-content-center m-3">
   <% @items.last(6).each do |item| %>
     <div class="d-flex justify-content-evenly">
-      <div class="px-5 py-1 bd-highlight">
+      <div class="px-5 py-1 bd-highlight align-self-end">
         <%if item.sale_status=="販売中" %>
           <%= link_to customer_item_path(item) do %>
             <div cals><%= image_tag item.get_image(200,200) %></div>

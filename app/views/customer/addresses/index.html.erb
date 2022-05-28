@@ -14,7 +14,7 @@
 
     <%= form_with model: @address, url: customer_addresses_path do |f| %>
       <p><%= f.label :postcode, "郵便番号" %>
-      <%= f.text_field :postcode %>
+      <%= f.text_field :postcode, autofocus: true %>
       </p>
       <p><%= f.label :address, "住所" %>
       <%= f.text_field :address %>
