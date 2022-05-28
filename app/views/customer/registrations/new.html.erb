@@ -1,0 +1,62 @@
+<h2>新規登録</h2>
+<%= form_with model: @customer, url: customer_registration_path do |f| %>
+  <%= render "customer/shared/error_messages", resource: resource %>
+  <div class="field">
+    <%= f.label :last_name%><br>
+    <%= f.text_field :last_name, autofocus: true, placeholder: "おさかな" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :first_name %><br>
+    <%= f.text_field :first_name, placeholder: "かれー" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :last_name_kana %><br>
+    <%= f.text_field :last_name_kana, placeholder: "オサカナ" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :first_name_kana %><br>
+    <%= f.text_field :first_name_kana, placeholder: "カレー" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :email %><br />
+    <%= f.email_field :email, autocomplete: "email", placeholder: "osakanacurry@mail.com" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :postcode %><br>
+    <%= f.text_field :postcode, placeholder: "xxxxxxx" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :address %><br>
+    <%= f.text_field :address, placeholder: "東京都　港区" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :phone_number %><br>
+    <%= f.text_field :phone_number, placeholder: "09012345678" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :password %>
+    <% if @minimum_password_length %>
+    <em>(<%= @minimum_password_length %> 文字以上入力してください)</em>
+    <% end %><br />
+    <%= f.password_field :password, autocomplete: "new-password", placeholder: "パスワード入力" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :password_confirmation %><br />
+    <%= f.password_field :password_confirmation, autocomplete: "new-password", placeholder: "パスワード入力" %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "新規登録", class: 'btn btn-success mr-3' %>
+  </div>
+<% end %>
+
+<%= render "customer/shared/links" %><br><br>

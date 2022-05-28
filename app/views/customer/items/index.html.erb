@@ -1,0 +1,22 @@
+<!--ジャンル検索-->
+
+<!--商品一覧(全X件)-->
+<h3 class="title font-weight-bold">商品一覧（全<%= @amount %>件)</h3>
+
+ <div class="row">
+  <% @items.each do |item| %>
+  <div class="col-sm-3 mx-auto align-self-end ">
+   <%= link_to customer_item_path(item.id) do %>
+    <p><%= image_tag item.get_image(200,200) %></p>
+  <% end %>
+     <div>
+       <%= item.name %><br>
+     ￥<%= item.price.to_s(:delimited) %>
+     </div>
+   </div>
+ <% end %>
+</div>
+
+<div class="col-sm-3 mx-auto my-5" >
+ <%= paginate @items %>
+</div>

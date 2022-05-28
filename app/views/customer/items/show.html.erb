@@ -1,0 +1,22 @@
+<!--ジャンル検索-->
+
+<!--商品詳細-->
+<div class = "row">
+ <div class="col-sm-4">
+  <%= image_tag @item.get_image(250,250) %>  <!--商品画像-->
+ </div>
+ <div class="col-sm-8">
+  <h4><strong><%= @item.name %></strong></h4><br>  <!--商品名-->
+  <p><%= @item.text %></p><br> <!--商品説明文-->
+  <p><strong>￥<%= @item.add_tax_price.to_s(:delimited) %></strong>(税込)</p> <!--税込価格-->
+  <%= form_with model: @cart, url: customer_carts_path, method: :post do |f| %>  <!--商品をカートに追加するフォーム-->
+   <%= f.hidden_field :item_id, :value => @item.id %><!--管理者でなければ商品登録はできない。今回は顧客が商品情報を入力することなく、どの商品をカートに追加するかの情報を送る-->
+   <%= flash[:alert] %><br>
+　 <%= f.select :amount, *[1..10], prompt: "個数選択" %> <!--数量選択フォーム-->
+   <%= f.submit 'カートに入れる',class: "glyphicon glyphicon-pencil btn btn-success center-block" %><br>
+  <% end %>
+  <%= link_to "商品一覧に戻る",customer_items_path, class: "btn btn-outline-secondary" %>
+ </div>
+</div>
+
+
