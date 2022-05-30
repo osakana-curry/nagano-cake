@@ -1,3 +1,45 @@
+.image1 {
+  background-image: url(top2.jpg);
+  height: 600px;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.image2 {
+  background-image: url(top.jpg);
+  height: 600px;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.image3 {
+  background-image: url(top3.jpg);
+  height: 600px;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+#tall {
+  height: 600px;
+  position: relative;
+}
+
+.top-text {
+  position: absolute;
+  top: 20%;
+  right: 55%;
+  background-color: rgba(255,255,255,0.8);
+  color: #E2AA50;
+  border-radius: 30px;
+  font-weight: bold;
+}
+
+
+
+
 // Place all the styles related to the homes controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
