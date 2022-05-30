@@ -13,6 +13,9 @@
  *= require_tree .
  *= require_self
  */
+ @import "skippr";
+ @import "homes";
+
 .pagination>li>a {
   border: none;
   color: #696969;
@@ -26,4 +29,10 @@
 .pagination>li>a:hover {
   border-radius: 15px;
 }
+
+#tall{
+  height: 600px;
+
+}
+
 
